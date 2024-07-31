@@ -1,0 +1,22 @@
+name: Conditional Workflow
+on: 
+  push:
+    branches:
+      - Development
+  pull_request: {}
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Run action if not Dependabot
+        if: github.triggering_actor != 'dependabot[bot]'
+        run: echo "This action runs only if the actor is not Dependabot"
+
+      - name: Run action if Dependabot
+        if: github.triggering_actor == 'dependabot[bot]'
+        run: echo "This action runs only if the actor is Dependabot"
