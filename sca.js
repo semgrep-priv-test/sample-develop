@@ -16,7 +16,7 @@ function hello() {
 _.merge(myObj, maliciousObject);
 
 
-hello();
+
 
 function notExposedVuln() {
   const args = ["a", "b", "c", "d"]
